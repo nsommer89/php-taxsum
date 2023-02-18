@@ -5,4 +5,24 @@ if (php_sapi_name() !== 'cli') {
     exit;
 }
 
-echo "Hello World!" . PHP_EOL;
+require_once __DIR__ . '/../src/Taxsum.php';
+
+use Nsommer89\PhpTaxsum\Taxsum;
+
+$method = $argv[1] ?? null;
+$tax_percent = $argv[2] ?? null;
+$amount = $argv[3] ?? null;
+
+$taxsum = new Taxsum($tax_percent);
+
+switch ($method) {
+    case 'back':
+        echo $taxsum->back($amount) . PHP_EOL;
+        break;
+    case 'forth':
+        echo $taxsum->forth($amount) . PHP_EOL;
+        break;
+    default:
+        echo "Please provide a valid method name as first argument. Valid methods are: vatOfAmount, vatOfIncluded";
+        break;
+}
