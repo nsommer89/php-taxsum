@@ -1,0 +1,19 @@
+{
+    "name": "nsommer89/php-taxsum",
+    "bin": ["bin/taxsum"],
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Nsommer89\\PhpTaxsum\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Nikolaj Sommer",
+            "email": "nikolaj.jensen@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
