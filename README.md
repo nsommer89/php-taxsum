@@ -2,8 +2,8 @@
 ## About
 A library in PHP to calculate taxes forth and back. Can calculate the amount of VAT on a price and calculate the VAT amount of a price, where VAT is already added.
 ## Requirements
-Minimum `php8.0`
-## Installation
+Minimum ` >= php8.0`
+## Installation with Composer
 `composer require nsommer89/php-taxsum`
 
 .. or github page: https://github.com/nsommer89/php-taxsum
@@ -26,7 +26,7 @@ echo 312.50 - $taxsum->back(312.50); // 312.50 - 62.50 = 250.00
 
 #### Adding options to the constructor
 ```
-.....
+// ...
 $taxsum = new Taxsum(25.00, [
    'currency' => 'DKK', //
    'currency_space' => true
@@ -35,10 +35,10 @@ $taxsum = new Taxsum(25.00, [
    'decimal_separator' => ',',
    'thousands_separator' => '.',
 ]);
-.....
+// ...
 ```
 #### Explanation of options
-`currency` €|$|£|DKK|NOK|SEK etc. Disabled: `null`
+`currency` €|$|£|DKK|NOK|SEK etc. `null` for disabled
 
 `currency_space` Adds space between currency and amount
 
@@ -51,6 +51,12 @@ $taxsum = new Taxsum(25.00, [
 `thousands_separator` The character which indicate thousands
 
 ## CLI usage
+
+Overall usage
+```
+$ ./vendor/bin/taxsum <method> <tax> <amount>
+<result>
+```
 
 Calculate forth
 ```
