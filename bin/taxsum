@@ -42,7 +42,7 @@ try {
             echo $taxsum->forth($amount) . PHP_EOL;
             break;
         default:
-            echo "Please provide a valid method name as first argument. Valid methods are: vatOfAmount, vatOfIncluded";
+            echo "Please provide a valid method name as first argument. Valid methods are: forth, back";
             exit(1);
             break;
     }
