@@ -11,7 +11,7 @@ Minimum `php8.0`
 ## Library usage
 ```
 <?php
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/path/to/autoload.php';
 
 use Nsommer89\PhpTaxsum\Taxsum;
 
