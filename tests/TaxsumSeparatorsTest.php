@@ -4,8 +4,7 @@ use Nsommer89\PhpTaxsum\Taxsum;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
-// ShoppingCart test class
-class TaxsumTest extends TestCase {
+class TaxsumSeparatorsTest extends TestCase {
 
     public function testThousandsSeparatorCannotHaveMoreThanOneCharacter() {
         $this->expectException(\Exception::class);
