@@ -13,6 +13,12 @@ $method = $argv[1] ?? null;
 $tax_percent = $argv[2] ?? null;
 $amount = $argv[3] ?? null;
 
+if ($method == null || $tax_percent == null || $amount == null) {
+    echo "Please provide a method name, tax percent and amount as arguments." . PHP_EOL;
+    echo "Example: php bin/taxsum <back|forth> <tax> <amount>" . PHP_EOL;
+    exit;
+}
+
 $taxsum = new Taxsum($tax_percent);
 
 switch ($method) {
