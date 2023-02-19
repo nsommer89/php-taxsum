@@ -1,5 +1,6 @@
 {
     "name": "nsommer89/php-taxsum",
+    "description": "A library in PHP to calculate taxes forth and back",
     "bin": ["bin/taxsum"],
     "type": "library",
     "license": "MIT",
