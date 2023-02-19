@@ -3,11 +3,13 @@
 /**
  * This file is part of the php-taxsum package.
  * (c) 2023 Nikolaj Sommmer Jensen
- * @link
  * @license MIT
+ * @author nsommer89
+ * @package Nsommer89\PhpTaxsum
+ * @version 1.2.2
  */
 if (php_sapi_name() !== 'cli') {
-    exit;
+    exit(1);
 }
 
 require_once __DIR__ . '/../src/Taxsum.php';

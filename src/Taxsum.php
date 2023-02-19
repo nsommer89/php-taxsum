@@ -110,10 +110,21 @@ class Taxsum {
                 throw new \Exception('Currency must be a maximum of 3 characters.');
             }
 
-            if (!in_array($this->options['currency_position'], ['before', 'after'])) {
-                throw new \Exception('Currency position must be either "before" or "after".');
+            if ($this->options['currency_position'] != null) {
+                if (!in_array($this->options['currency_position'], ['before', 'after'])) {
+                    throw new \Exception('Currency position must be either "before" or "after".');
+                }
             }
+            
         }
+    }
+
+    /**
+     * Get the options array.
+     * @return array
+     */
+    public function getOptions() : array {
+        return $this->options;
     }
 
     /**
@@ -165,6 +176,7 @@ class Taxsum {
 
         if ($this->options['currency'] != null) {
             $currency_space = $this->options['currency_space'] === true ? ' ' : '';
+            $currency_space = $this->options['currency_position'] !== null ? $currency_space : '';
             $value = $this->options['currency_position'] == 'before'
             ? $this->options['currency'] . $currency_space . $value
             : $value . $currency_space . $this->options['currency'];

@@ -2,8 +2,6 @@
 use PHPUnit\Framework\TestCase;
 use Nsommer89\PhpTaxsum\Taxsum;
 
-require_once __DIR__ . '/../vendor/autoload.php';
-
 class TaxsumSeparatorsTest extends TestCase {
 
     public function testThousandsSeparatorCannotHaveMoreThanOneCharacter() {
