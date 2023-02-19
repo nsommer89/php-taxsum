@@ -1,6 +1,11 @@
 #!/usr/bin/env php
 <?php
-
+/**
+ * This file is part of the php-taxsum package.
+ * (c) 2023 Nikolaj Sommmer Jensen
+ * @link
+ * @license MIT
+ */
 if (php_sapi_name() !== 'cli') {
     exit;
 }
@@ -9,26 +14,40 @@ require_once __DIR__ . '/../src/Taxsum.php';
 
 use Nsommer89\PhpTaxsum\Taxsum;
 
-$method = $argv[1] ?? null;
+$method      = $argv[1] ?? null;
 $tax_percent = $argv[2] ?? null;
-$amount = $argv[3] ?? null;
+$amount      = $argv[3] ?? null;
 
 if ($method == null || $tax_percent == null || $amount == null) {
     echo "Please provide a method name, tax percent and amount as arguments." . PHP_EOL;
     echo "Example: php bin/taxsum <back|forth> <tax> <amount>" . PHP_EOL;
-    exit;
+    exit(1);
 }
 
-$taxsum = new Taxsum($tax_percent);
+try {
+    $taxsum = new Taxsum($tax_percent, [
+        'currency' => null,
+        'currency_space' => false,
+        'decimals' => 2,
+        'currency_position' => null,
+        'decimal_separator' => '.',
+        'thousands_separator' => ',',
+    ]);
 
-switch ($method) {
-    case 'back':
-        echo $taxsum->back($amount) . PHP_EOL;
-        break;
-    case 'forth':
-        echo $taxsum->forth($amount) . PHP_EOL;
-        break;
-    default:
-        echo "Please provide a valid method name as first argument. Valid methods are: vatOfAmount, vatOfIncluded";
-        break;
+    switch ($method) {
+        case 'back':
+            echo $taxsum->back($amount) . PHP_EOL;
+            break;
+        case 'forth':
+            echo $taxsum->forth($amount) . PHP_EOL;
+            break;
+        default:
+            echo "Please provide a valid method name as first argument. Valid methods are: vatOfAmount, vatOfIncluded";
+            exit(1);
+            break;
+    }
+} catch (\Exception $e) {
+    echo $e->getMessage() . PHP_EOL;
+    exit(1);
 }
+exit(0);
