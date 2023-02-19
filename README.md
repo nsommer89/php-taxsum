@@ -1,6 +1,8 @@
 # php-taxsum
 ## About
 A library in PHP to calculate taxes forth and back. Can calculate the amount of VAT on a price and calculate the VAT amount of a price, where VAT is already added.
+## Requirements
+Minimum `php8.0`
 ## Installation
 `composer require nsommer89/php-taxsum`
 

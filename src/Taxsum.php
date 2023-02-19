@@ -67,6 +67,7 @@ class Taxsum {
 
     /**
      * @param array $options
+     * @throws \Exception
      * @return void
      */
     private function setOptions($options = []) : void {
@@ -138,7 +139,7 @@ class Taxsum {
      * @param float $amount
      * @return float
      */
-    public function forth($amount = 0.00) : string {
+    public function forth($amount = 0.00) : string|float {
         return $this->formatOutput($amount > 0 ? $amount * ($this->tax_percent / 100) : 0);
     }
 
@@ -146,7 +147,7 @@ class Taxsum {
      * @param float $amount
      * @return float
      */
-    public function back($amount = 0.00) : string {
+    public function back($amount = 0.00) : string|float {
         return $this->formatOutput($amount > 0 ? ($amount / (100 + $this->tax_percent) * $this->tax_percent) : 0);
     }
 
@@ -154,7 +155,7 @@ class Taxsum {
      * @param float $amount
      * @return float
      */
-    private function formatOutput($amount = 0.00) : string {
+    private function formatOutput($amount = 0.00) : string|float {
         $value = number_format(
             floatval($amount),
             $this->options['decimals'],
